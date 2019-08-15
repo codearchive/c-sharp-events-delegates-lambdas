@@ -2,7 +2,7 @@
 
 namespace module_02
 {
-    public delegate void WorkPerfomedHandler(int hours, WorkType workType);
+    public delegate int WorkPerfomedHandler(int hours, WorkType workType);
 
 
     class Program
@@ -18,11 +18,11 @@ namespace module_02
 
             //DoWork(del1);
 
-            del1 += del2 + del3; // invoke list -> del1, del2, del3 will be printed in that order
+            del1 += del2 + del3; // invocation list -> del1, del2, del3 will be printed in that order
 
-            del1(10, WorkType.GenerateReports);
+            int finalHours = del1(10, WorkType.GenerateReports);
 
-            Console.ReadLine();
+            Console.WriteLine(finalHours);
         }
 
         static void DoWork(WorkPerfomedHandler del)
@@ -30,19 +30,22 @@ namespace module_02
             del(5, WorkType.GoToMeetings);
         }
 
-        static void WorkPerformed1(int hours, WorkType workType)
+        static int WorkPerformed1(int hours, WorkType workType)
         {
             Console.WriteLine("WorkPerformed1 called " + hours.ToString());
+            return hours + 1;
         }
 
-        static void WorkPerformed2(int hours, WorkType workType)
+        static int WorkPerformed2(int hours, WorkType workType)
         {
             Console.WriteLine("WorkPerformed2 called " + hours.ToString());
+            return hours + 2;
         }
 
-        static void WorkPerformed3(int hours, WorkType workType)
+        static int WorkPerformed3(int hours, WorkType workType)
         {
             Console.WriteLine("WorkPerformed3 called " + hours.ToString());
+            return hours + 3;
         }
     }
 
