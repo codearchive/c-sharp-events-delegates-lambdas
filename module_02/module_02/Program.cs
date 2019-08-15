@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace module_02
 {
@@ -11,15 +7,20 @@ namespace module_02
 
     class Program
     {
-        static void Main(string[] args)
+        static void Main()
         {
             WorkPerfomedHandler del1 = new WorkPerfomedHandler(WorkPerformed1);
             WorkPerfomedHandler del2 = new WorkPerfomedHandler(WorkPerformed2);
+            WorkPerfomedHandler del3 = new WorkPerfomedHandler(WorkPerformed3);
 
             //del1(5, WorkType.Golf);
             //del2(10, WorkType.GenerateReports);
 
-            DoWork(del1);
+            //DoWork(del1);
+
+            del1 += del2 + del3; // invoke list -> del1, del2, del3 will be printed in that order
+
+            del1(10, WorkType.GenerateReports);
 
             Console.ReadLine();
         }
@@ -37,6 +38,11 @@ namespace module_02
         static void WorkPerformed2(int hours, WorkType workType)
         {
             Console.WriteLine("WorkPerformed2 called " + hours.ToString());
+        }
+
+        static void WorkPerformed3(int hours, WorkType workType)
+        {
+            Console.WriteLine("WorkPerformed3 called " + hours.ToString());
         }
     }
 
