@@ -2,9 +2,6 @@
 
 namespace module_02
 {
-    public delegate int WorkPerfomedHandler(int hours, WorkType workType);
-
-
     class Program
     {
         static void Main()
