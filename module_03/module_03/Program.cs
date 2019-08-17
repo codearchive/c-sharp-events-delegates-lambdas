@@ -20,8 +20,11 @@ namespace module_03
             //int finalHours = del1(10, WorkType.GenerateReports);
 
             var worker = new Worker();
-            worker.WorkPerformed += new EventHandler<WorkPerformedEventArgs>(worker_WorkPerformed);
-            worker.WorkCompleted += new EventHandler(worker_WorkCompleted);
+            worker.WorkPerformed += worker_WorkPerformed;
+            worker.WorkCompleted += worker_WorkCompleted;
+
+            worker.WorkCompleted -= worker_WorkCompleted;
+
             worker.DoWork(8, WorkType.GenerateReports);
             //Console.WriteLine(finalHours);
         }
