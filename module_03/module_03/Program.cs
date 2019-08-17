@@ -20,23 +20,20 @@ namespace module_03
             //int finalHours = del1(10, WorkType.GenerateReports);
 
             var worker = new Worker();
-            worker.WorkPerformed += worker_WorkPerformed;
-            worker.WorkCompleted += worker_WorkCompleted;
+            //worker.WorkPerformed += worker_WorkPerformed;
+            worker.WorkPerformed += delegate(object sender, WorkPerformedEventArgs e)
+            {
+                Console.WriteLine($"Hours worked: {e.Hours} {e.WorkType}");
+            };
+            //worker.WorkCompleted += worker_WorkCompleted;
+            worker.WorkCompleted += delegate (object sender, EventArgs e)
+            {
+                Console.WriteLine("Worker is done");
+            };
+            //worker.WorkCompleted -= worker_WorkCompleted;
 
-            worker.WorkCompleted -= worker_WorkCompleted;
-
-            worker.DoWork(8, WorkType.GenerateReports);
+            worker.DoWork(4, WorkType.GenerateReports);
             //Console.WriteLine(finalHours);
-        }
-
-        static void worker_WorkPerformed(object sender, WorkPerformedEventArgs e)
-        {
-            Console.WriteLine($"Hours worked: {e.Hours} {e.WorkType}");
-        }
-
-        static void worker_WorkCompleted(object sender, EventArgs e)
-        {
-            Console.WriteLine("Worker is done");
         }
 
         //static void DoWork(WorkPerformedHandler del)
@@ -61,12 +58,5 @@ namespace module_03
         //    Console.WriteLine("WorkPerformed3 called " + hours.ToString());
         //    return hours + 3;
         //}
-    }
-
-    public enum WorkType
-    {
-        GoToMeetings,
-        Golf,
-        GenerateReports
     }
 }

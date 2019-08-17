@@ -2,6 +2,13 @@
 
 namespace module_03
 {
+    public enum WorkType
+    {
+        GoToMeetings,
+        Golf,
+        GenerateReports
+    }
+
     public class WorkPerformedEventArgs : EventArgs
     {
         public WorkPerformedEventArgs(int hours, WorkType workType)
