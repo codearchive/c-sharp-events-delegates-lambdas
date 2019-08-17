@@ -2,10 +2,18 @@
 
 namespace module_04
 {
+    public delegate int BizRulesDelegate(int x, int y);
+
     class Program
     {
         static void Main()
         {
+            BizRulesDelegate addDel = (x, y) => x + y;
+            BizRulesDelegate multiplyDel = (x, y) => x * y;
+
+            var data = new ProcessData();
+            data.Process(2, 3, multiplyDel);
+
             var worker = new Worker();
             worker.WorkPerformed += (s, e) =>
             {
