@@ -14,6 +14,10 @@ namespace module_04
             var data = new ProcessData();
             data.Process(2, 3, multiplyDel);
 
+            Action<int, int> myAction = (x, y) => Console.WriteLine(x + y);
+            Action<int, int> myMultiplyAction = (x, y) => Console.WriteLine(x * y);
+            data.ProcessAction(5, 7, myMultiplyAction);
+
             var worker = new Worker();
             worker.WorkPerformed += (s, e) =>
             {
