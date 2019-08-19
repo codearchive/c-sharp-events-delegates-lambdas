@@ -13,7 +13,8 @@ namespace ThreadsAndDelegates
 {
     public partial class AsyncGood : Form
     {
-        delegate void UpdateProgressDelegate(int val);
+        delegate void StartProgressDelegate(int val);
+        delegate void ShowProgressDelegate(int val);
 
         public AsyncGood()
         {
@@ -27,7 +28,7 @@ namespace ThreadsAndDelegates
 
         private void StartButton_Click(object sender, System.EventArgs e)
         {
-            UpdateProgressDelegate progDel = new UpdateProgressDelegate(StartProcess);
+            StartProgressDelegate progDel = new StartProgressDelegate(StartProcess);
             progDel.BeginInvoke(100, null, null);
             MessageBox.Show("Done with operation!!");
 
@@ -46,7 +47,17 @@ namespace ThreadsAndDelegates
 
         private void ShowProgress(int i)
         {
-
+            // This is hit if a backround thread calls ShowProgress()
+            if (lblOutput.InvokeRequired == true)
+            {
+                var del = new ShowProgressDelegate(ShowProgress);
+                this.BeginInvoke(del, new object[] { i });
+            }
+            else
+            {
+                lblOutput.Text = i.ToString();
+                pbStatus.Value = i;
+            }
         }
 
     }
