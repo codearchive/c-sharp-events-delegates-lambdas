@@ -34,5 +34,10 @@ namespace ThreadsAndDelegates
             SearchLabel.Text = "Searching...";
             directorySearcher.BeginSearch();
         }
+
+        private void searchText_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -34,29 +34,33 @@
             this.directorySearcher = new ThreadsAndDelegates.DirectorySearcher();
             this.SuspendLayout();
             // 
-            // searchLabel
+            // SearchLabel
             // 
             this.SearchLabel.ForeColor = System.Drawing.Color.Red;
-            this.SearchLabel.Location = new System.Drawing.Point(102, 48);
-            this.SearchLabel.Name = "searchLabel";
-            this.SearchLabel.Size = new System.Drawing.Size(176, 16);
+            this.SearchLabel.Location = new System.Drawing.Point(238, 107);
+            this.SearchLabel.Margin = new System.Windows.Forms.Padding(7, 0, 7, 0);
+            this.SearchLabel.Name = "SearchLabel";
+            this.SearchLabel.Size = new System.Drawing.Size(411, 36);
             this.SearchLabel.TabIndex = 7;
             // 
             // searchText
             // 
             this.searchText.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.searchText.Location = new System.Drawing.Point(102, 24);
+            this.searchText.Location = new System.Drawing.Point(238, 54);
+            this.searchText.Margin = new System.Windows.Forms.Padding(7, 7, 7, 7);
             this.searchText.Name = "searchText";
-            this.searchText.Size = new System.Drawing.Size(175, 20);
+            this.searchText.Size = new System.Drawing.Size(403, 35);
             this.searchText.TabIndex = 5;
             this.searchText.Text = "c:\\*.cs";
+            this.searchText.TextChanged += new System.EventHandler(this.searchText_TextChanged);
             // 
             // SearchButton
             // 
-            this.SearchButton.Location = new System.Drawing.Point(6, 16);
+            this.SearchButton.Location = new System.Drawing.Point(14, 36);
+            this.SearchButton.Margin = new System.Windows.Forms.Padding(7, 7, 7, 7);
             this.SearchButton.Name = "SearchButton";
-            this.SearchButton.Size = new System.Drawing.Size(88, 40);
+            this.SearchButton.Size = new System.Drawing.Size(205, 89);
             this.SearchButton.TabIndex = 4;
             this.SearchButton.Text = "&Search";
             this.SearchButton.Click += new System.EventHandler(this.SearchButton_Click_1);
@@ -66,21 +70,23 @@
             this.directorySearcher.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.directorySearcher.Location = new System.Drawing.Point(6, 72);
+            this.directorySearcher.Location = new System.Drawing.Point(14, 161);
+            this.directorySearcher.Margin = new System.Windows.Forms.Padding(7);
             this.directorySearcher.Name = "directorySearcher";
             this.directorySearcher.SearchCriteria = null;
-            this.directorySearcher.Size = new System.Drawing.Size(271, 173);
+            this.directorySearcher.Size = new System.Drawing.Size(632, 386);
             this.directorySearcher.TabIndex = 6;
             // 
             // DirectorySearcherForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(14F, 29F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(284, 261);
+            this.ClientSize = new System.Drawing.Size(663, 582);
             this.Controls.Add(this.SearchLabel);
             this.Controls.Add(this.directorySearcher);
             this.Controls.Add(this.searchText);
             this.Controls.Add(this.SearchButton);
+            this.Margin = new System.Windows.Forms.Padding(7, 7, 7, 7);
             this.Name = "DirectorySearcherForm";
             this.Text = "DirectorySearcherForm";
             this.ResumeLayout(false);
